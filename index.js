@@ -8,8 +8,10 @@ dotenv.config();
 // Create an express app and set the port number.
 const app = express();
 const port = 3000;
-const API_URL = "https://api.openweathermap.org/data/2.5/forecast";
-const apiKey = process.env.API_KEY;
+const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/forecast";
+const GEOCODING_API_URL = "https://www.mapquestapi.com/geocoding/v1/address";
+const apiKeyWeather = process.env.WEATHER_API_KEY;
+const apiKeyGeocoding = process.env.GEOCODING_API_KEY;
 
 // Use the public folder for static files.
 app.use(express.static("public"));
@@ -20,21 +22,30 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-// Use Axios to retrieve the weather forecast and pass it to index.ejs to
-// display whether tomorrow will be rainy or not.
+// Add a feature to the homepage (index.ejs) that
+// shows whether tomorrow's weather forecast includes rain.
 app.post("/", async (req, res) => {
-  //const location = req.body["location"];
+  const location = req.body["location"];
+  let latitude, longitude;
 
-  const data = {
-    lat: 22.21232,
-    lon: -55.107964,
-    // lat: 45.21232,
-    // lon: 22.107964,
-  };
-
+  // Use Axios to retrieve the geographical coordinates of the location.
   try {
-    const response = await axios.get(API_URL, {
-      params: { lat: data.lat, lon: data.lon, appid: apiKey },
+    const response = await axios.get(GEOCODING_API_URL, {
+      params: { key: apiKeyGeocoding, location: location },
+    });
+    latitude = response.data.results[0].locations[0].latLng.lat;
+    longitude = response.data.results[0].locations[0].latLng.lng;
+    console.log(latitude);
+    console.log(longitude);
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+  }
+
+  // Use Axios to retrieve the weather forecast and pass it to index.ejs to
+  // display whether tomorrow will be rainy or not.
+  try {
+    const response = await axios.get(WEATHER_API_URL, {
+      params: { lat: latitude, lon: longitude, appid: apiKeyWeather },
     });
     res.render("index.ejs", {
       morning_data: response.data.list[7].weather[0].main,
