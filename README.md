@@ -55,9 +55,9 @@ This will start the server, and you can access the application at `http://localh
 
 ## Structure
 
-`index.js`: Main server-side script containing the Express.js application.
-`public`: Directory for static files.
-`views`: Directory containing EJS templates for rendering HTML pages.
+* `index.js`: Main server-side script containing the Express.js application.
+* `public`: Directory for static files.
+* `views`: Directory containing EJS templates for rendering HTML pages.
 
 ## Credits
 
