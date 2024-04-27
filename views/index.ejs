@@ -19,6 +19,20 @@
       </form>
     </div>
 
-    <% if(locals.content) { %> <%= content %> <% } %>
+    <div class="message-container">
+      <% if(locals.morning_data && locals.afternoon_data) { %> <% if
+      (morning_data === 'Rain' && afternoon_data === 'Rain') { %>
+      <h3 class="message">
+        The weather forecast for tomorrow predicts precipitation in the form of
+        rain, indicating a 🌧️ Rainy 🌧️ day ahead.
+      </h3>
+      <% } else { %>
+      <h3 class="message">
+        The likelihood of a 🌧️ Rainy 🌧️ day tomorrow is low.
+      </h3>
+      <% }%> <% } %> <% if(locals.error) { %>
+      <p><%= error %></p>
+      <% } %>
+    </div>
   </body>
 </html>
