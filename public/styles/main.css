@@ -1,0 +1,53 @@
+/* Form container */
+.location-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px; /* Increased padding */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+
+/* Form labels */
+.location-form label {
+  display: block;
+  margin-bottom: 10px; /* Adjusted margin */
+  font-weight: bold;
+  color: #333333;
+  font-size: 18px; /* Increased font size */
+}
+
+/* Form input fields */
+.location-form input[type="text"] {
+  width: 100%;
+  padding: 12px; /* Increased padding */
+  margin-bottom: 20px; /* Adjusted margin */
+  border: 1px solid #999999; /* Adjusted border color */
+  border-radius: 4px;
+  resize: none;
+  font-size: 18px; /* Increased font size */
+  line-height: 1.5;
+}
+
+/* Submit button */
+.location-form input[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px; /* Increased font size */
+  padding: 15px 20px; /* Adjusted padding */
+  transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+.location-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+#location-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
