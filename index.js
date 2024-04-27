@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 // Use Axios to retrieve the weather forecast and pass it to index.ejs to
 // display whether tomorrow will be rainy or not.
 app.post("/", (req, res) => {
+  const location = req.body["location"];
   res.render("index.ejs");
 });
 

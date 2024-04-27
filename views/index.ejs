@@ -14,8 +14,11 @@
       <form action="/" method="POST">
         <label for="title">Location:</label>
         <input type="text" id="location" name="location" required />
+        <p id="warning-text">Please enter the name of city!</p>
         <input type="submit" value="Search" />
       </form>
     </div>
+
+    <% if(locals.content) { %> <%= content %> <% } %>
   </body>
 </html>
