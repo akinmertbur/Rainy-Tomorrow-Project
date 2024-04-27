@@ -66,5 +66,3 @@ This project was created by Akın Mert Bür.
 ## License
 
 This project is licensed under the `MIT License`.
-
-You can copy this content and save it as `ReadMe.md` in your project directory.
